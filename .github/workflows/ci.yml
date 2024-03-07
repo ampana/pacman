@@ -25,8 +25,12 @@ jobs:
         run: docker build . --file Dockerfile --tag pacman-game:$IMAGE_TAG
         
       - name: Security Scan with Trivy
-        run: docker run --rm -v $(pwd):/workdir aquasec/trivy:latest --severity HIGH,CRITICAL --exit-code 1 pacman-game:$IMAGE_TAG
-        
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: pacman-game:$IMAGE_TAG
+          exit-code: '1'
+          severity: 'CRITICAL,HIGH'   
+          
       - name: Push Docker image to Docker Hub
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
