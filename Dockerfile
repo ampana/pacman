@@ -1,5 +1,5 @@
 # Use a base image with Node.js installed
-FROM node:14.21.3
+FROM node:14.21.3-slim
 
 # Set the working directory in the container
 WORKDIR /usr/src/app
