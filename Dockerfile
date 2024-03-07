@@ -13,7 +13,7 @@ RUN npm install
 # Copy the entire project directory into the container
 COPY . .
 
-# Expose port 3000 to the outside world
+# Expose port 8080 to the outside world
 EXPOSE 8080
 
 # Command to run the application
