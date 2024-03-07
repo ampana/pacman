@@ -19,7 +19,7 @@ jobs:
       - name: Set image tag
         id: set_tag
         run: |
-          echo "IMAGE_TAG=1.${{ env.GITHUB_RUN_NUMBER }}" >> $GITHUB_ENV
+          echo "IMAGE_TAG=1.${GITHUB_RUN_NUMBER}" >> $GITHUB_ENV
           
       - name: Build Docker image
         run: docker build . --file Dockerfile --tag pacman-game:${{ env.IMAGE_TAG }}
